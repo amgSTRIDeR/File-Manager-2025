@@ -8,6 +8,7 @@ import createFile from "../utils/createFile.js";
 import createFolder from "../utils/createFolder.js";
 import renameFile from "../utils/renameFile.js";
 import copyFile from "../utils/copyFile.js";
+import removeFile from "../utils/removeFile.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -79,6 +80,13 @@ const fileManager = async () => {
             case ('mv'):
                 if (options[0] && options[1]) {
                     await copyFile(currentDir, options[0], options[1], { deleteSource: true });
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
+                }
+                break;
+            case ('rm'):
+                if (options[0]) {
+                    await removeFile(currentDir, options[0]);
                 } else {
                     logColoredMessage(`Invalid input`, 'red');
                 }
