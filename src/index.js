@@ -7,6 +7,7 @@ import showFileContent from "../utils/showFileContent.js";
 import createFile from "../utils/createFile.js";
 import createFolder from "../utils/createFolder.js";
 import renameFile from "../utils/renameFile.js";
+import copyFile from "../utils/copyFile.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -64,6 +65,13 @@ const fileManager = async () => {
             case ('rn'):
                 if (options[0] && options[1]) {
                     await renameFile(currentDir, options[0], options[1]);
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
+                }
+                break;
+            case ('cp'):
+                if (options[0] && options[1]) {
+                    await copyFile(currentDir, options[0], options[1]);
                 } else {
                     logColoredMessage(`Invalid input`, 'red');
                 }
