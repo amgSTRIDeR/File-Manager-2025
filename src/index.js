@@ -4,6 +4,7 @@ import toUpperDirectory from "../utils/to-upper-directory.js";
 import { changeDirectory } from "../utils/change-directory.js";
 import list from "../utils/list.js";
 import showFileContent from "../utils/showFileContent.js";
+import createFile from "../utils/createFile.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -40,6 +41,13 @@ const fileManager = async () => {
             case ('cat'):
                 if (options[0]) {
                     await showFileContent(currentDir, options[0]);
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
+                }
+                break;
+            case ('add'):
+                if (options[0]) {
+                    await createFile(currentDir, options[0]);
                 } else {
                     logColoredMessage(`Invalid input`, 'red');
                 }
