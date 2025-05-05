@@ -11,6 +11,8 @@ import copyFile from "../utils/copyFile.js";
 import removeFile from "../utils/removeFile.js";
 import handleOSCommands from "../utils/handleOSCommands.js";
 import calculateHash from "../utils/calculateHash.js";
+import compressFile from "../utils/compressFile.js";
+import decompressFile from "../utils/decompressFile.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -100,13 +102,28 @@ const fileManager = async () => {
                     logColoredMessage('Invalid input', 'red');
                 }
                 break;
-                case ('hash'):
-                    if (options[0]) {
-                        await calculateHash(currentDir, options[0]);
-                    } else {
-                        logColoredMessage('Invalid input', 'red');
-                    }
-                    break;
+            case ('hash'):
+                if (options[0]) {
+                    await calculateHash(currentDir, options[0]);
+                } else {
+                    logColoredMessage('Invalid input', 'red');
+                }
+                break;
+            case ('compress'):
+                if (options[0] && options[1]) {
+                    await compressFile(currentDir, options[0], options[1]);
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
+                }
+                
+                break;
+            case ('decompress'):
+                if (options[0] && options[1]) {
+                    await decompressFile(currentDir, options[0], options[1]);
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
+                }
+                break;
             case ('.exit'):
                 process.exit();
             default:
