@@ -9,6 +9,7 @@ import createFolder from "../utils/createFolder.js";
 import renameFile from "../utils/renameFile.js";
 import copyFile from "../utils/copyFile.js";
 import removeFile from "../utils/removeFile.js";
+import handleOSCommands from "../utils/handleOSCommands.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -89,6 +90,13 @@ const fileManager = async () => {
                     await removeFile(currentDir, options[0]);
                 } else {
                     logColoredMessage(`Invalid input`, 'red');
+                }
+                break;
+            case ('os'):
+                if (options[0] && options[0].startsWith('--')) {
+                    handleOSCommands(options[0]);
+                } else {
+                    logColoredMessage('Invalid input', 'red');
                 }
                 break;
             case ('.exit'):
