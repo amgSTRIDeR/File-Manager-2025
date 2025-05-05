@@ -10,6 +10,7 @@ import renameFile from "../utils/renameFile.js";
 import copyFile from "../utils/copyFile.js";
 import removeFile from "../utils/removeFile.js";
 import handleOSCommands from "../utils/handleOSCommands.js";
+import calculateHash from "../utils/calculateHash.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -99,6 +100,13 @@ const fileManager = async () => {
                     logColoredMessage('Invalid input', 'red');
                 }
                 break;
+                case ('hash'):
+                    if (options[0]) {
+                        await calculateHash(currentDir, options[0]);
+                    } else {
+                        logColoredMessage('Invalid input', 'red');
+                    }
+                    break;
             case ('.exit'):
                 process.exit();
             default:
