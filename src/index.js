@@ -76,6 +76,13 @@ const fileManager = async () => {
                     logColoredMessage(`Invalid input`, 'red');
                 }
                 break;
+            case ('mv'):
+                if (options[0] && options[1]) {
+                    await copyFile(currentDir, options[0], options[1], { deleteSource: true });
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
+                }
+                break;
             case ('.exit'):
                 process.exit();
             default:

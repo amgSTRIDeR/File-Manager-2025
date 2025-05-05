@@ -6,10 +6,9 @@ import { isFile } from './is-file.js';
 import { isDirectory } from './is-directory.js';
 
 
-export default async function copyFile(currentDirectory, pathToFile, destinationDirectory) {
+export default async function copyFile(currentDirectory, pathToFile, destinationDirectory, options = { deleteSource: false }) {
     try {
         const normalizedFilePath = path.normalize(pathToFile);
-
         let resolvedPathToFile = path.resolve(currentDirectory, normalizedFilePath);
         if (await isFile(normalizedFilePath)) {
             resolvedPathToFile = normalizedFilePath;
@@ -42,6 +41,9 @@ export default async function copyFile(currentDirectory, pathToFile, destination
         });
 
         await copyPromise;
+        if (options.deleteSource) {
+            fs.promises.unlink(resolvedPathToFile);
+        }
         logColoredMessage(`File ${resolvedPathToFile} copied to ${resolvedPathToDirectory}`, 'yellow');
     } catch (err) {
         logColoredMessage(`Invalid input`, 'red');
