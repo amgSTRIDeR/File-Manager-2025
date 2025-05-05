@@ -2,6 +2,7 @@ import logColoredMessage from "../../node-nodejs-basics/src/common/colors.js";
 import os from "os";
 import toUpperDirectory from "../utils/to-upper-directory.js";
 import { changeDirectory } from "../utils/change-directory.js";
+import list from "../utils/list.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -17,8 +18,7 @@ const fileManager = async () => {
         const options = input.slice(1);
 
         switch (command) {
-            case ('.exit'):
-                process.exit();
+
             case ('up'):
                 if (currentDir === homeDir) {
                     logColoredMessage(`\nAlready in home directory: ${currentDir}`, 'red');
@@ -29,8 +29,15 @@ const fileManager = async () => {
             case ('cd'):
                 if (options[0]) {
                     currentDir = await changeDirectory(currentDir, options[0]);
-                    break;
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
                 }
+                break;
+            case ('ls'):
+                await list(currentDir);
+                break;
+            case ('.exit'):
+                process.exit();
             default:
                 logColoredMessage(`Invalid input`, 'red');
         }

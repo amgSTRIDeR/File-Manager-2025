@@ -5,7 +5,7 @@ export default function toUpperDirectory(currentDirectory) {
     try {
                 const newDirectory = currentDirectory.split(path.sep).slice(0, -1).join(path.sep);
                 return newDirectory;
-    } catch {
+    } catch (err) {
         logColoredMessage(err, 'red');
         logColoredMessage('Operation failed', 'red');
         return currentDirectory;
