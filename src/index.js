@@ -5,6 +5,7 @@ import { changeDirectory } from "../utils/change-directory.js";
 import list from "../utils/list.js";
 import showFileContent from "../utils/showFileContent.js";
 import createFile from "../utils/createFile.js";
+import createFolder from "../utils/createFolder.js";
 
 const fileManager = async () => {
     const argsArray = (process.argv).slice(2);
@@ -48,6 +49,13 @@ const fileManager = async () => {
             case ('add'):
                 if (options[0]) {
                     await createFile(currentDir, options[0]);
+                } else {
+                    logColoredMessage(`Invalid input`, 'red');
+                }
+                break;
+            case ('mkdir'):
+                if (options[0]) {
+                    await createFolder(currentDir, options[0]);
                 } else {
                     logColoredMessage(`Invalid input`, 'red');
                 }
