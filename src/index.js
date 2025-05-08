@@ -1,4 +1,4 @@
-import logColoredMessage from "../../node-nodejs-basics/src/common/colors.js";
+import logColoredMessage from "../common/colors.js";
 import os from "os";
 import toUpperDirectory from "../utils/to-upper-directory.js";
 import { changeDirectory } from "../utils/change-directory.js";

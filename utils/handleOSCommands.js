@@ -1,5 +1,5 @@
 import os from 'os';
-import logColoredMessage from '../../node-nodejs-basics/src/common/colors.js';
+import logColoredMessage from "../common/colors.js";
 
 export default function handleOSCommands(arg) {
     const command = arg.slice(2);

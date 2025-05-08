@@ -1,5 +1,5 @@
 import fs from 'fs';
-import logColoredMessage from '../../node-nodejs-basics/src/common/colors.js';
+import logColoredMessage from "../common/colors.js";
 import path from 'path';
 import { isFile } from './is-file.js';
 

@@ -3,7 +3,7 @@ import path from 'path';
 import crypto from 'crypto';
 import fs from 'fs';
 import { isFile } from './is-file.js';
-import logColoredMessage from '../../node-nodejs-basics/src/common/colors.js';
+import logColoredMessage from "../common/colors.js";
 
 
 export default async function calculateHash(currentDirectory, pathToFile) {

@@ -1,5 +1,5 @@
 import path from 'path';
-import logColoredMessage from '../../node-nodejs-basics/src/common/colors.js';
+import logColoredMessage from "../common/colors.js";
 import { isDirectory } from './is-directory.js';
 
 export async function changeDirectory(currentDirectory, destinationDirectory) {
